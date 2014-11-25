@@ -1,5 +1,6 @@
 <?php
-  require_once(dirname(__FILE__).'/hobbits.model.php');
+  $dir = dirname(__FILE__);
+  require_once($dir.'/hobbits.model.php');
 
   if(!class_exists('HobbitsController')){
     class HobbitsController extends stdClass {}
@@ -12,55 +13,77 @@
 
     $hobbit = Hobbit::create($data);
 
-    $app->response->setBody($hobbit->to_json());
+    $app->redirect($app->urlFor('hobbit',array('id'=>$hobbit->id)));
+  };
+
+  $ctrl->blank = function() use($app,$dir){
+    $hobbit = new Hobbit();
+
+    require($dir.'/views/blank.php');
   };
 
   // READ
-  $ctrl->index = function() use($app){
-    $hobbits = array_map(function($hobbit){
-      return $hobbit->to_array();
-    }, Hobbit::find('all'));
+  $ctrl->index = function() use($app,$dir){
+    $hobbits = Hobbit::find('all');
 
-    $app->response->setBody(json_encode($hobbits));
+    require($dir.'/views/index.php');
   };
 
-  $ctrl->show = function($id) use($app){
-    $hobbit = Hobbit::find_by_id($id);
-
-    if($hobbit){
-      $app->response->write($hobbit->to_json());
-    }else{
-      $app->response->setStatus(404);
+  $ctrl->show = function($id) use($app,$dir,$ctrl){
+    $hobbit = call_user_func($ctrl->getHobbit,$id);
+    if(!$hobbit){
+      $app->redirect($app->urlFor('hobbits'));
+      return;
     }
+
+    require($dir.'/views/show.php');
   };
 
   // UPDATE
-  $ctrl->update = function($id) use($app){
+  $ctrl->update = function($id) use($app,$ctrl){
     $data = $app->request->params('hobbit');
 
-    $hobbit = Hobbit::find_by_id($id);
-
-    if($hobbit){
-      $hobbit->set_attributes($data);
-      $hobbit->save();
-
-      $app->response->write($hobbit->to_json());
-    }else{
-      $app->response->setStatus(404);
+    $hobbit = call_user_func($ctrl->getHobbit,$id);
+    if(!$hobbit){
+      $app->redirect($app->urlFor('hobbits'));
+      return;
     }
+
+    $hobbit->set_attributes($data);
+    $hobbit->save();
+
+    $app->redirect($app->urlFor('hobbit',array('id'=>$id)));
+  };
+
+  $ctrl->edit = function($id) use($app,$dir,$ctrl){
+    $hobbit = call_user_func($ctrl->getHobbit,$id);
+    if(!$hobbit){
+      $app->redirect($app->urlFor('hobbits'));
+      return;
+    }
+
+    require($dir.'/views/edit.php');
   };
 
   // DELETE
-  $ctrl->destroy = function($id) use($app){
+  $ctrl->destroy = function($id) use($app,$ctrl){
+    $hobbit = call_user_func($ctrl->getHobbit,$id);
+    if(!$hobbit) return;
+
+    $hobbit->delete();
+
+    $app->redirect($app->urlFor('hobbits'));
+  };
+
+  $ctrl->getHobbit = function($id) use($app){
     $hobbit = Hobbit::find_by_id($id);
 
-    if($hobbit){
-      $hobbit->delete();
-
-      $app->response->setStatus(204);
-    }else{
+    if(!$hobbit){
       $app->response->setStatus(404);
+      $app->response->finalize();
     }
+
+    return $hobbit;
   };
 
   return $ctrl;
