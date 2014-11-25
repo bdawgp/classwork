@@ -3,6 +3,7 @@
     "description": "Classwork for CS4000 in PHP",
     "require": {
         "ext-sqlite3": "*",
+        "ext-pdo_sqlite": "*",
         "flynsarmy/slim-monolog": "1.*",
         "monolog/monolog": "1.*",
         "php-activerecord/php-activerecord": "*",

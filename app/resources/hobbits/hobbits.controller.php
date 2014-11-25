@@ -19,7 +19,7 @@
   $ctrl->index = function() use($app){
     $hobbits = array_map(function($hobbit){
       return $hobbit->to_array();
-    },Hobbit::find_by_id('all'));
+    }, Hobbit::find('all'));
 
     $app->response->setBody(json_encode($hobbits));
   };
