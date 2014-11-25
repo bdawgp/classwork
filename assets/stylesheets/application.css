@@ -1,0 +1,22 @@
+* {
+  font-family: "Helvetica Nue", Arial, sans-serif;
+}
+
+body {
+  padding: 20px;
+  background: #ccc;
+  font-size: 15px;
+}
+
+#wrapper {
+  width: 960px;
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 15px;
+  background: #eee;
+  border: 1px solid #aaa;
+}
+
+input {
+  font-size: 1.1em;
+}

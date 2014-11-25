@@ -6,6 +6,5 @@
 <form action="<?= $next ?>" method="post">
   <?php if($hobbit->id){ echo 'ID: '.$hobbit->id; } ?>
   <div>Name: <input type="text" name="hobbit[name]" value="<?= $hobbit->name; ?>"></div>
-  <input type="submit">
+  <p><input type="submit"> <a href="<?= $next; ?>">Cancel</a></p>
 </form>
-<a href="<?= $next; ?>">Cancel</a>

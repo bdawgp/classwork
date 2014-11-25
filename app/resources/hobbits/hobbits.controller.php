@@ -19,14 +19,22 @@
   $ctrl->blank = function() use($app,$dir){
     $hobbit = new Hobbit();
 
+    ob_start();
     require($dir.'/views/blank.php');
+    $render = ob_get_clean();
+
+    require('views/layout.php');
   };
 
   // READ
   $ctrl->index = function() use($app,$dir){
     $hobbits = Hobbit::find('all');
 
+    ob_start();
     require($dir.'/views/index.php');
+    $render = ob_get_clean();
+
+    require('views/layout.php');
   };
 
   $ctrl->show = function($id) use($app,$dir,$ctrl){
@@ -36,7 +44,11 @@
       return;
     }
 
+    ob_start();
     require($dir.'/views/show.php');
+    $render = ob_get_clean();
+
+    require('views/layout.php');
   };
 
   // UPDATE
@@ -62,7 +74,11 @@
       return;
     }
 
+    ob_start();
     require($dir.'/views/edit.php');
+    $render = ob_get_clean();
+
+    require('views/layout.php');
   };
 
   // DELETE
