@@ -30,6 +30,15 @@
   $ctrl->index = function() use($app,$dir){
     $hobbits = Hobbit::find('all');
 
+    $col = (in_array($_GET['col'],array('id','name'))) ? $_GET['col'] : 'id';
+    $asc = ($_GET['dir'] == 'desc') ? -1 : 1;
+
+    usort($hobbits, function($a, $b) use($col,$asc){
+      if($a->$col == $b->$col) return 0;
+
+      return ($a->$col < $b->$col ? -1 : 1)*$asc;
+    });
+
     ob_start();
     require($dir.'/views/index.php');
     $render = ob_get_clean();
