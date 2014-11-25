@@ -1,0 +1,21 @@
+{
+    "name": "bradynpoulsen/classwork_cs4000-php",
+    "description": "Classwork for CS4000 in PHP",
+    "require": {
+        "ext-sqlite3": "*",
+        "flynsarmy/slim-monolog": "1.*",
+        "monolog/monolog": "1.*",
+        "php-activerecord/php-activerecord": "*",
+        "php": ">=5.5",
+        "slim/slim": "2.*"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
+    },
+    "authors": [
+        {
+            "name": "Bradyn Poulsen",
+            "email": "bradyn@bradynpoulsen.com"
+        }
+    ]
+}

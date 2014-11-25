@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^assets - [L]
+
+RewriteRule .? index.php [L,QSA]
