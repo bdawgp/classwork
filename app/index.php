@@ -16,6 +16,7 @@
   $app->group('', require($dir.'/application.routes.php'));
   $app->group('/resources', require($dir.'/resources/resources.routes.php'));
   $app->group('/users', require($dir.'/users/users.routes.php'));
+  $app->group('/uploads-validations', require($dir.'/uploads-validations/uploads-validations.routes.php'));
 
   // Launch app listener
   $app->run();

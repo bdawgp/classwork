@@ -10,3 +10,17 @@ CREATE TABLE users (
   email varchar NOT NULL UNIQUE,
   password_digest varchar
 );
+
+CREATE TABLE pictures (
+  id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  title varchar,
+  file_path varchar,
+  date_taken varchar
+);
+
+CREATE TABLE bios (
+  id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name varchar,
+  birthday varchar,
+  content text
+);

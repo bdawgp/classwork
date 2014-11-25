@@ -48,10 +48,7 @@
 
   $ctrl->show = function($id) use($app,$dir,$ctrl){
     $hobbit = call_user_func($ctrl->getHobbit,$id);
-    if(!$hobbit){
-      $app->redirect($app->urlFor('hobbits'));
-      return;
-    }
+    if(!$hobbit) return;
 
     ob_start();
     require($dir.'/views/show.php');
@@ -65,10 +62,7 @@
     $data = $app->request->params('hobbit');
 
     $hobbit = call_user_func($ctrl->getHobbit,$id);
-    if(!$hobbit){
-      $app->redirect($app->urlFor('hobbits'));
-      return;
-    }
+    if(!$hobbit) return;
 
     $hobbit->set_attributes($data);
     $hobbit->save();
@@ -78,10 +72,7 @@
 
   $ctrl->edit = function($id) use($app,$dir,$ctrl){
     $hobbit = call_user_func($ctrl->getHobbit,$id);
-    if(!$hobbit){
-      $app->redirect($app->urlFor('hobbits'));
-      return;
-    }
+    if(!$hobbit) return;
 
     ob_start();
     require($dir.'/views/edit.php');
@@ -105,7 +96,7 @@
 
     if(!$hobbit){
       $app->response->setStatus(404);
-      $app->response->finalize();
+      $app->redirect($app->urlFor('hobbits'));
     }
 
     return $hobbit;
