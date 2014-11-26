@@ -6,4 +6,5 @@
       $app->redirect($app->urlFor('bios'));
     });
     $app->group('/bios', require($dir.'/bios/bios.routes.php'));
+    $app->group('/pictures', require($dir.'/pictures/pictures.routes.php'));
   };

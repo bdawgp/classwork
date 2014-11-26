@@ -30,3 +30,24 @@ th, td {
 input {
   font-size: 1.1em;
 }
+
+#pictures {
+  text-align: center;
+}
+.picture {
+  display: inline-block;
+  width: 300px;
+  overflow: hidden;
+  opacity: 0.9;
+  margin: 5px;
+}
+
+.picture:hover {
+  opacity: 1;
+}
+
+.picture img {
+  width: 100%;
+  border: none;
+  display: block;
+}

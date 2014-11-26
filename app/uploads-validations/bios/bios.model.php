@@ -11,6 +11,12 @@
       array('birthday'),
       array('content')
     );
+
+    public function validate(){
+      if(!strtotime($this->birthday)):
+        $this->errors->add('birthday', 'must be a valid date');
+      endif;
+    }
   }
 
   return 'Bio';
