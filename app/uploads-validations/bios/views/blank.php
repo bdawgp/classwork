@@ -1,7 +1,7 @@
 <h2>Create Bio</h2>
 
 <?php if($error): ?>
-  <p style="color: #c00;"><?= $error; ?></p>
+  <p style="color:#c00;"><?= $error; ?></p>
 <?php endif; ?>
 
 <form action="<?= $app->urlFor('bios'); ?>" method="post">
