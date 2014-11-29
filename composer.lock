@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "48043d64aa86db18c6f276da523f05a5",
+    "hash": "9474f2d7822f40c89588ac894ed71f44",
     "packages": [
         {
             "name": "flynsarmy/slim-monolog",
@@ -246,16 +246,16 @@
     "packages-dev": [
         {
             "name": "heroku/heroku-buildpack-php",
-            "version": "v47",
+            "version": "v49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heroku/heroku-buildpack-php.git",
-                "reference": "3d1d7237930583994b336d80ec5712e9a0fcfa1d"
+                "reference": "0adff36b9d648a3f836271fb7a6dc7eafff74356"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/3d1d7237930583994b336d80ec5712e9a0fcfa1d",
-                "reference": "3d1d7237930583994b336d80ec5712e9a0fcfa1d",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/0adff36b9d648a3f836271fb7a6dc7eafff74356",
+                "reference": "0adff36b9d648a3f836271fb7a6dc7eafff74356",
                 "shasum": ""
             },
             "bin": [
@@ -286,13 +286,14 @@
                 "nginx",
                 "php"
             ],
-            "time": "2014-11-14 16:30:56"
+            "time": "2014-11-28 14:22:06"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
     "platform": {
+        "ext-sqlite3": "*",
         "ext-pdo_sqlite": "*",
         "php": ">=5.5"
     },
