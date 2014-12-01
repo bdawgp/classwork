@@ -1,0 +1,27 @@
+<h1>Browse Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>User</th>
+      <th>Page</th>
+      <th>Posted At</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.content %></td>
+        <td><%= post.user.email %></td>
+        <td><%= link_to post.page.title, page_path(post.page) %></td>
+        <td><%= post.updated_at.strftime '%m/%d/%Y %I:%M%P' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Quick Post', new_post_path %>

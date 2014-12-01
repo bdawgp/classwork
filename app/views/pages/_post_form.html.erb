@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+
+  <%= form_for(Post.new, multipart: true) do |f| %>
+
+  <div class="field">
+    <%= f.text_area :content, class: 'form-control', required: true %>
+  </div>
+
+  <%= f.hidden_field :page_id, value: @page.id %>
+  <%= f.hidden_field :return_to_page, value: 'true' %>
+
+  <div class="actions">
+    <%= f.file_field :picture %>
+    <%= f.submit %>
+  </div>
+  <% end %>
+
+<% else %>
+
+  <p style="font-style:oblique;text-align:center;">
+    <%= link_to 'Log in', new_user_session_path %> to post on this page!
+  </p>
+
+<% end %>

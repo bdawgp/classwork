@@ -1,0 +1,102 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+* {
+  font-family: "Helvetica Nue", Arial, sans-serif;
+}
+
+body {
+  padding: 20px;
+  background: #ccc;
+  font-size: 15px;
+}
+
+#wrapper {
+  width: 960px;
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 15px;
+  background: #eee;
+  border: 1px solid #aaa;
+}
+
+#footer {
+  text-align: center;
+  font-size: 0.8em;
+  font-style: oblique;
+  color: #555;
+}
+
+#navigation {
+  border: 1px solid #aaa;
+  border-width: 1px 0;
+}
+
+#navigation ul {
+  list-style: none;
+  padding: 0;
+  float: left;
+}
+
+#navigation #user-nav { float: right; }
+
+#navigation:after, #navigation ul:after, .row:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+#navigation li {
+  display: inline-block;
+  margin: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+img {
+  max-width: 100%;
+  border: none;
+}
+
+input {
+  font-size: 1.1em;
+}
+
+.row .sidebar {
+  float: left;
+  width: 20%;
+}
+
+.row .content {
+  float: right;
+  width: 80%;
+}
+
+.form-control {
+  width: 98%;
+  padding: 1%;
+}

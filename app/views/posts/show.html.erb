@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user.email %>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <%= link_to @post.page.title, page_path(@post.page) %>
+</p>
+
+<% if @post.picture.url %>
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag @post.picture %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'All Posts', posts_path %>

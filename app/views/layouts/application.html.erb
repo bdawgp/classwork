@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Classwork</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div id="wrapper">
+    <header id="header">
+      <h1>Post-it</h1>
+
+      <nav id="navigation">
+        <ul id="primary-nav">
+          <li><%= link_to 'Browse Pages', pages_path %></li>
+          <li><%= link_to 'Browse Posts', posts_path %></li>
+          <li><%= link_to 'Create Page', new_page_path %></li>
+        </ul>
+
+        <ul id="user-nav">
+          <%= if user_signed_in? then render 'user_menu' else render 'guest_menu' end %>
+        </ul>
+      </nav>
+    </header>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+
+  </div>
+
+  <footer id="footer">
+    Copyright &copy; <%= Time.now.strftime('%Y') %>. All Rights Reserved. Be cool out there
+  </footer>
+</body>
+</html>

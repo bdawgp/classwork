@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="sidebar">
+    <h3 style="margin-top:0;">About Page</h3>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @page.title %>
+    </p>
+
+    <p>
+      <strong>Intro:</strong>
+      <%= @page.intro %>
+    </p>
+
+    <p>
+      <strong>Tags:</strong>
+      <%= @page.category %>
+    </p>
+
+    <% if user_signed_in? and @page.user_id == current_user.id %>
+      <%= link_to 'Modify', edit_page_path(@page) %> |
+      <%= link_to 'Delete', page_path(@page), method: :delete, data: { confirm: 'Deleting this page cannot be undone' } %>
+    <% end %>
+  </div>
+  <div class="content">
+    <%= render 'post_form' %>
+
+    <% @posts.each do |post| %>
+
+    <hr>
+
+    <p>
+      <strong><%= post.user.email %></strong>:
+      <%= '[Photo] ' if post.picture.url %>
+      <%= post.content %>
+      <br>
+      <i><%= post.updated_at.strftime '%m/%d/%Y %I:%M%P' %></i>
+
+      <% if post.picture.url %>
+        <%= link_to 'view photo', post.picture.url %>
+      <% end %>
+
+      <%= link_to 'view post', post_path(post) %>
+
+      <% if user_signed_in? && post.user.id == current_user.id %>
+        <%= link_to 'delete', post_path(post, return_to_page: 'true'), method: :delete, data: { confirm: 'You are deleting the comment' } %>
+      <% end %>
+    </p>
+
+    <% end %>
+  </div>
+</div>
