@@ -1,0 +1,20 @@
+<h2>Thing Wizard</h2>
+<% if(typeof error === 'string'){ %>
+  <p style="color: #c00;"><%= error %></p>
+<% } %>
+<form action="./<%= typeof method === 'string' ? '?_method='+method : '' %>" method="post">
+  <p>
+    <label for="name">Name</label>
+    <input name="name" id="name" value="<%= thing.name || '' %>">
+  </p>
+  <p>
+    <label for="info">Info</label>
+    <input name="info" id="info" value="<%= thing.info || '' %>">
+  </p>
+  <p>
+    <label for="active">Active</label>
+    <input type="checkbox" name="active" value="true" <% if(thing.active){ %>checked<% } %>>
+  </p>
+  <p> <input type="submit"> </p>
+</form>
+<p><a href="./">Back</a></p>

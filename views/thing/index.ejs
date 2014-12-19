@@ -1,0 +1,18 @@
+<h2>Things</h2>
+<p>
+  <a href="/things/new">New Thing</a>
+</p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Info</th>
+    <th>Active</th>
+  </tr>
+  <% var i, thing; for(i=0; i<things.length; i++){ thing = things[i]; %>
+    <tr>
+      <td><a href="/things/<%= thing.id %>"><%= thing.name %></a></td>
+      <td><%= thing.info.substr(0, 20) %>...</td>
+      <td><%= thing.active ? 'yes' : 'no' %></td>
+    </tr>
+  <%  } %>
+</table>

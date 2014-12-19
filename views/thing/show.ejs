@@ -1,0 +1,21 @@
+<h2>Thing</h2>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <td><%= thing.name %></td>
+  </tr>
+  <tr>
+    <th>Info</th>
+    <td><%= thing.info %></td>
+  </tr>
+  <tr>
+    <th>Active</th>
+    <td><%= thing.active ? 'yes' : 'no' %></td>
+  </tr>
+</table>
+
+<p>
+  <a href="/things">All Things</a>
+  <a href="/things/<%= thing.id %>/edit">Edit</a>
+  <a href="/things/<%= thing.id %>?_method=delete" onclick="return confirm('You are deleting this thing')">Destroy</a>
+</p>

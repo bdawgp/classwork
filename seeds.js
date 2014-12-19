@@ -1,0 +1,6 @@
+'use script';
+
+//////////////////////////
+// Register model seeds //
+//////////////////////////
+require('./api/thing/thing.seed');
