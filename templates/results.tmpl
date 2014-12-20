@@ -1,0 +1,11 @@
+<p>Found {{ .TotalResults }} matches!</p>
+
+<div id="movies" style="text-align: center;">
+  {{ range $i, $movie := .Results }}
+    {{ if $movie.Poster }}
+    <a href="/movie/{{ $movie.ID }}" title="{{ $movie.Title }}" class="movie">
+      <img src="http://image.tmdb.org/t/p/w300{{ $movie.Poster }}" alt="{{ $movie.Title }}" style="width:19%;min-width:195px">
+    </a>
+    {{ end }}
+  {{ end }}
+</div>
